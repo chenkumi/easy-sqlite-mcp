@@ -33,21 +33,43 @@ npm run build
 npm run dev # Watch for changes and run in development mode
 ```
 
-## MCP Client Configuration
-
-To use this with Claude Desktop or other MCP-compatible clients, add the following to your configuration:
+## Claude Desktop Example
 
 ```json
 {
   "mcpServers": {
-    "easy-sqlite-mcp": {
+    "easy-mysql-mcp": {
       "command": "npx",
       "args": [
         "-y",
-        "easy-sqlite-mcp"
+        "easy-mysql-mcp"
       ]
     }
   }
+}
+```
+
+## Codex config.toml Example
+
+```
+[mcp_servers.easy-sqlite-mcp]
+args = ["-y", "easy-sqlite-mcp"]
+command = "npx"
+enabled = true
+```
+
+## OpenCode opencode.jsonc Example
+
+```json
+{
+  "$schema": "https://opencode.ai/config.json",
+  "mcp": {
+    "easy-mysql-mcp": {
+      "type": "local",
+      "command": ["npx", "-y", "easy-mysql-mcp"],
+      "enabled": true,
+    },
+  },
 }
 ```
 
