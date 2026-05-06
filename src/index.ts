@@ -14,7 +14,7 @@ import { registerSqliteTools } from "./tools/sqlite.js";
 // Create MCP server instance
 const server = new McpServer({
   name: "easy-sqlite-mcp",
-  version: "1.0.0",
+  version: "1.0.1",
 });
 
 // Register all SQLite tools
