@@ -4,16 +4,33 @@ import { SqliteManager } from "../services/sqlite-manager.js";
 
 const sqliteManager = new SqliteManager();
 
+export type RegisterSqliteToolsOptions = {
+  fixedDatabasePath?: string;
+};
+
 /**
  * Register all SQLite tools on the MCP server.
  */
-export function registerSqliteTools(server: McpServer): void {
-  // ─── sqlite_open ───────────────────────────────────────────────
-  server.registerTool(
-    "sqlite_open",
-    {
-      title: "Open SQLite Database",
-      description: `Open an SQLite database file at the specified path.
+export function registerSqliteTools(
+  server: McpServer,
+  options: RegisterSqliteToolsOptions = {}
+): void {
+  const fixedDatabasePath = options.fixedDatabasePath?.trim();
+
+  if (fixedDatabasePath) {
+    const result = sqliteManager.open(fixedDatabasePath);
+    if (!result.success) {
+      throw new Error(result.message);
+    }
+  }
+
+  if (!fixedDatabasePath) {
+    // ─── sqlite_open ───────────────────────────────────────────────
+    server.registerTool(
+      "sqlite_open",
+      {
+        title: "Open SQLite Database",
+        description: `Open an SQLite database file at the specified path.
 
 Args:
   - file_path (string): Absolute or relative path to the .db / .sqlite file.
@@ -26,56 +43,57 @@ Examples:
 
 Error Handling:
   - Returns success=false with message if the file cannot be opened.`,
-      inputSchema: {
-        file_path: z
-          .string()
-          .min(1, "file_path is required")
-          .describe("Path to the SQLite database file"),
+        inputSchema: {
+          file_path: z
+            .string()
+            .min(1, "file_path is required")
+            .describe("Path to the SQLite database file"),
+        },
+        annotations: {
+          readOnlyHint: false,
+          destructiveHint: false,
+          idempotentHint: true,
+          openWorldHint: false,
+        },
       },
-      annotations: {
-        readOnlyHint: false,
-        destructiveHint: false,
-        idempotentHint: true,
-        openWorldHint: false,
-      },
-    },
-    async ({ file_path }) => {
-      const result = sqliteManager.open(file_path);
-      return {
-        content: [{ type: "text", text: JSON.stringify(result, null, 2) }],
-        structuredContent: result,
-      };
-    }
-  );
+      async ({ file_path }) => {
+        const result = sqliteManager.open(file_path);
+        return {
+          content: [{ type: "text", text: JSON.stringify(result, null, 2) }],
+          structuredContent: result,
+        };
+      }
+    );
 
-  // ─── sqlite_close ──────────────────────────────────────────────
-  server.registerTool(
-    "sqlite_close",
-    {
-      title: "Close SQLite Database",
-      description: `Close the currently open SQLite database connection.
+    // ─── sqlite_close ──────────────────────────────────────────────
+    server.registerTool(
+      "sqlite_close",
+      {
+        title: "Close SQLite Database",
+        description: `Close the currently open SQLite database connection.
 
 Returns:
   { "success": boolean, "message": string }
 
 Error Handling:
   - Returns success=false if no database is currently open.`,
-      inputSchema: {},
-      annotations: {
-        readOnlyHint: false,
-        destructiveHint: false,
-        idempotentHint: true,
-        openWorldHint: false,
+        inputSchema: {},
+        annotations: {
+          readOnlyHint: false,
+          destructiveHint: false,
+          idempotentHint: true,
+          openWorldHint: false,
+        },
       },
-    },
-    async () => {
-      const result = sqliteManager.close();
-      return {
-        content: [{ type: "text", text: JSON.stringify(result, null, 2) }],
-        structuredContent: result,
-      };
-    }
-  );
+      async () => {
+        const result = sqliteManager.close();
+        return {
+          content: [{ type: "text", text: JSON.stringify(result, null, 2) }],
+          structuredContent: result,
+        };
+      }
+    );
+  }
 
   // ─── sqlite_status ─────────────────────────────────────────────
   server.registerTool(

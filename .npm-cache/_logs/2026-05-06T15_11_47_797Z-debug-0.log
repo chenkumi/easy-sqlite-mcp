@@ -1,0 +1,51 @@
+0 verbose cli C:\Program Files\nodejs\node.exe C:\Users\ChenKuanMing\AppData\Roaming\npm\node_modules\npm\bin\npm-cli.js
+1 info using npm@11.13.0
+2 info using node@v24.15.0
+3 silly config load:file:C:\Users\ChenKuanMing\AppData\Roaming\npm\node_modules\npm\npmrc
+4 silly config load:file:C:\projects\easy-sqlite-mcp\.npmrc
+5 silly config load:file:C:\Users\ChenKuanMing\.npmrc
+6 silly config load:file:C:\Users\ChenKuanMing\AppData\Roaming\npm\etc\npmrc
+7 verbose title npm pack easy-sqlite-mcp@1.0.3
+8 verbose argv "pack" "easy-sqlite-mcp@1.0.3" "--dry-run" "--cache" ".\\.npm-cache"
+9 verbose logfile logs-max:10 dir:C:\projects\easy-sqlite-mcp\.npm-cache\_logs\2026-05-06T15_11_47_797Z-
+10 verbose logfile C:\projects\easy-sqlite-mcp\.npm-cache\_logs\2026-05-06T15_11_47_797Z-debug-0.log
+11 silly logfile done cleaning log files
+12 http fetch GET 200 https://registry.npmjs.org/easy-sqlite-mcp 315ms (cache miss)
+13 http fetch GET 200 https://registry.npmjs.org/easy-sqlite-mcp 49ms (cache revalidated)
+14 http fetch GET 200 https://registry.npmjs.org/easy-sqlite-mcp/-/easy-sqlite-mcp-1.0.3.tgz 698ms (cache miss)
+15 notice
+16 notice package: easy-sqlite-mcp@1.0.3
+17 notice Tarball Contents
+18 notice 1.1kB LICENSE
+18 notice 1.1kB LICENSE.md
+18 notice 2.7kB README.md
+18 notice 317B dist/index.d.ts
+18 notice 119B dist/index.d.ts.map
+18 notice 992B dist/index.js
+18 notice 743B dist/index.js.map
+18 notice 1.7kB dist/services/sqlite-manager.d.ts
+18 notice 1.3kB dist/services/sqlite-manager.d.ts.map
+18 notice 4.5kB dist/services/sqlite-manager.js
+18 notice 4.1kB dist/services/sqlite-manager.js.map
+18 notice 231B dist/tools/sqlite.d.ts
+18 notice 224B dist/tools/sqlite.d.ts.map
+18 notice 9.7kB dist/tools/sqlite.js
+18 notice 5.6kB dist/tools/sqlite.js.map
+18 notice 1.4kB package.json
+18 notice 1.9kB skills/sqlite-mcp/SKILL.md
+19 notice Tarball Details
+20 notice name: easy-sqlite-mcp
+21 notice version: 1.0.3
+22 notice filename: easy-sqlite-mcp-1.0.3.tgz
+23 notice package size: 9.8 kB
+24 notice unpacked size: 37.6 kB
+25 notice shasum: 09f3eccef7b5db627048c8db3bfe3a8968b1a12e
+26 notice integrity: sha512-KMkie6lYUIZlt[...]olFNqYUdGnFpg==
+27 notice total files: 17
+28 notice
+29 verbose cwd C:\projects\easy-sqlite-mcp
+30 verbose os Windows_NT 10.0.26200
+31 verbose node v24.15.0
+32 verbose npm  v11.13.0
+33 verbose exit 0
+34 info ok
