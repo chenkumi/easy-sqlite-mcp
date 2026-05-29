@@ -149,7 +149,7 @@ Error Handling:
           .min(1, "SQL query is required")
           .describe("SQL SELECT statement to execute"),
         params: z
-          .record(z.string(), z.unknown())
+          .record(z.unknown())
           .optional()
           .describe("Optional named parameters for the query"),
       },
@@ -200,7 +200,7 @@ Error Handling:
           .min(1, "SQL statement is required")
           .describe("SQL statement to execute (INSERT, UPDATE, DELETE, etc.)"),
         params: z
-          .record(z.string(), z.unknown())
+          .record(z.unknown())
           .optional()
           .describe("Optional named parameters for the statement"),
       },
