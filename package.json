@@ -1,6 +1,6 @@
 {
     "name": "easy-sqlite-mcp",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "description": "A high-performance Model Context Protocol (MCP) server for SQLite database interaction.",
     "keywords": [
         "mcp",
