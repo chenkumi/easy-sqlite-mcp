@@ -1,6 +1,6 @@
 {
     "name": "easy-sqlite-mcp",
-    "version": "1.0.5",
+    "version": "1.1.0",
     "description": "A high-performance Model Context Protocol (MCP) server for SQLite database interaction.",
     "keywords": [
         "mcp",
@@ -32,15 +32,15 @@
         "easy-sqlite-mcp": "dist/index.js"
     },
     "scripts": {
-    "start": "node dist/index.js",
-    "dev": "tsx watch src/index.ts",
-    "build": "tsc",
-    "test": "npm run build && node --test test/*.test.mjs",
-    "clean": "rimraf dist"
-  },
-  "engines": {
-    "node": ">=20"
-  },
+        "start": "node dist/index.js",
+        "dev": "tsx watch src/index.ts",
+        "build": "tsc",
+        "test": "npm run build && node --test test/*.test.mjs",
+        "clean": "rimraf dist"
+    },
+    "engines": {
+        "node": ">=20"
+    },
     "dependencies": {
         "@modelcontextprotocol/sdk": "^1.29.0",
         "better-sqlite3": "^12.11.1",
